@@ -26,5 +26,13 @@ const displaySongs = songs => {
 }
 
 const getLyric = (artist, title) =>{
-    console.log(artist, title);
+   const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+   fetch(url)
+   .then(response => response.json())
+   .then(data => displayLyrics(data.lyrics))
+}
+
+const displayLyrics = lyrics => {
+    const lyricsDiv = document.getElementById('song-Lyrics');
+    lyricsDiv.innerText = lyrics; 
 }
