@@ -1,13 +1,14 @@
-const searchSongs = () => {
+const searchSongs = async () => {
     const searchText = document.getElementById('search-field').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
     // Load data
-    fetch(url)
-        .then(response => response.json())
-        .then(data => displaySongs(data.data))
+    const res = await fetch(url);
+    const data = await response.json();
+    displaySongs(data.data);
 }
 const displaySongs = songs => {
     const songContainer = document.getElementById('song-container');
+    songContainer.innerHTML = '';
     songs.forEach(song => {
         const songDiv = document.createElement('div');
         songDiv.className = "single-result row align-items-center my-3 p-3";
@@ -25,14 +26,14 @@ const displaySongs = songs => {
     });
 }
 
-const getLyric = (artist, title) =>{
-   const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-   fetch(url)
-   .then(response => response.json())
-   .then(data => displayLyrics(data.lyrics))
+const getLyric = async (artist, title) => {
+    const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+    const res = await fetch(url);
+    const data = await response.json();
+    displayLyrics(data.lyrics);
 }
 
 const displayLyrics = lyrics => {
     const lyricsDiv = document.getElementById('song-Lyrics');
-    lyricsDiv.innerText = lyrics; 
+    lyricsDiv.innerText = lyrics;
 }
