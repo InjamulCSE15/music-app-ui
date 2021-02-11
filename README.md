@@ -9,3 +9,4 @@ lyric link: https://api.lyrics.ovh/v1/:artist/:title
 
 example: https://api.lyrics.ovh/v1/Adele/Hello
 # music-app-ui
+live site link: https://injamulcse15.github.io/music-app-ui/
